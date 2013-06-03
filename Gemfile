@@ -31,14 +31,17 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :test, :development do
+  gem "factory_girl_rails", "~> 4.2.1"
+  gem "rspec-rails", "~> 2.13.2"
+end
+
+group :test do
+  gem "shoulda-matchers", "~> 2.1.0"
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
