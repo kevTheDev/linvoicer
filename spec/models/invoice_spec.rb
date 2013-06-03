@@ -1,5 +1,12 @@
 require 'spec_helper'
 
 describe Invoice do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe 'Associations' do
+    
+    it { should have_many(:invoice_items) }
+    
+  end
+  # Associations
+  
 end

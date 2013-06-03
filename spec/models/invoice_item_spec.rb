@@ -1,5 +1,15 @@
 require 'spec_helper'
 
 describe InvoiceItem do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe 'Associations' do
+    
+    it { should belong_to(:client) }
+    
+    it { should belong_to(:invoice) }
+    
+  end
+  # Associations
+  
+  
 end
