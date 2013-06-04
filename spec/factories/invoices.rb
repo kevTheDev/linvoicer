@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :invoice do
+    month 'February'
+    year 2013
   end
 end

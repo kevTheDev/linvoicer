@@ -17,4 +17,15 @@ describe Invoice do
   end
   # Validations
   
+  describe '#title' do
+    
+    subject { create(:invoice, month: 'May', year: 2014) }
+    
+    it 'should contain the month and year' do
+      subject.title.include?('May').should == true
+      subject.title.include?('2014').should == true
+    end
+    
+  end
+  # title
 end
