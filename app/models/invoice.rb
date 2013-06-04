@@ -5,7 +5,7 @@ class Invoice < ActiveRecord::Base
   validates :month, presence: true
   validates :year, presence: true
   
-  accepts_nested_attributes_for :invoice_items
+  accepts_nested_attributes_for :invoice_items, allow_destroy: true
   
   def title
     "#{month} #{year}"
