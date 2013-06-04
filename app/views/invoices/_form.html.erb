@@ -2,7 +2,7 @@
 
   <div class="form-inputs">
 	  <%= f.input :month, :collection => MONTHS %>
-    <%= f.select_year(Date.today, :start_year => 1992, :end_year => 2007) %>
+    <%= f.input :year, :collection => years_for_select %>
   </div>
 
   <div class="form-actions">
