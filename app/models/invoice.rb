@@ -5,8 +5,22 @@ class Invoice < ActiveRecord::Base
   validates :month, presence: true
   validates :year, presence: true
   
+  accepts_nested_attributes_for :invoice_items
+  
   def title
     "#{month} #{year}"
   end
   
 end
+
+# == Schema Information
+#
+# Table name: invoices
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime
+#  updated_at :datetime
+#  month      :string(20)
+#  year       :integer
+#
+

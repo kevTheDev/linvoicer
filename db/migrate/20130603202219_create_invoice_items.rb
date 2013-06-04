@@ -5,7 +5,7 @@ class CreateInvoiceItems < ActiveRecord::Migration
       t.integer :invoice_id
       t.date :date
       t.time :start
-      t.time :end
+      t.time :finish
 
       t.timestamps
     end

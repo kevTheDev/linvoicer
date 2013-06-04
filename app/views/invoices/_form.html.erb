@@ -3,6 +3,15 @@
   <div class="form-inputs">
 	  <%= f.input :month, :collection => MONTHS %>
     <%= f.input :year, :collection => years_for_select %>
+    
+    <!-- dont allow adding of invoice items unless the invoice has already been saved -->
+    <% unless @invoice.new_record? %>
+      
+      <%= simple_fields_for :invoice_items do |i| %>
+        <%= i.input :date %>
+      <% end %>
+      
+    <% end %>
   </div>
 
   <div class="form-actions">

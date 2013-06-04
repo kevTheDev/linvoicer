@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20130604131250) do
     t.integer  "invoice_id"
     t.date     "date"
     t.time     "start"
-    t.time     "end"
+    t.time     "finish"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

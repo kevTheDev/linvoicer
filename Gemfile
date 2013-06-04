@@ -32,6 +32,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem "annotate", "~> 2.5.0"
+end
+
 group :test, :development do
   gem "factory_girl_rails", "~> 4.2.1"
   gem "rspec-rails", "~> 2.13.2"

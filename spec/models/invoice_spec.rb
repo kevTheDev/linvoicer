@@ -29,3 +29,15 @@ describe Invoice do
   end
   # title
 end
+
+# == Schema Information
+#
+# Table name: invoices
+#
+#  id         :integer          not null, primary key
+#  created_at :datetime
+#  updated_at :datetime
+#  month      :string(20)
+#  year       :integer
+#
+
