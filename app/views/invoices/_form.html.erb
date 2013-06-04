@@ -1,4 +1,9 @@
-<%= form_for @invoice, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @invoice, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <div class="form-inputs">
+	  <%= f.input :month, :collection => MONTHS %>
+    <%= f.select_year(Date.today, :start_year => 1992, :end_year => 2007) %>
+  </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

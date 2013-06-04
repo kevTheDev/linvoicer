@@ -21,6 +21,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem "simple_form", "~> 3.0.0.rc"
 gem "twitter-bootstrap-rails", "~> 2.2.6"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
