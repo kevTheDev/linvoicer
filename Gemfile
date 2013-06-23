@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '4.0.0.rc2'
 
 # Use sqlite3 as the database for Active Record
 gem "pg", "~> 0.15.1"
@@ -25,7 +25,7 @@ gem "simple_form", "~> 3.0.0.rc"
 gem "twitter-bootstrap-rails", "~> 2.2.6"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.0.1'
+gem 'jbuilder', '~> 1.4.2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -42,7 +42,7 @@ group :test, :development do
 end
 
 group :test do
-  gem "shoulda-matchers", "~> 2.1.0"
+  gem "shoulda-matchers", "~> 2.2.0"
 end
 
 
