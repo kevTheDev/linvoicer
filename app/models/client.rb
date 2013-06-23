@@ -1,6 +1,6 @@
 class Client < ActiveRecord::Base
   
-  validates :first_name,  presence: true
+  validates :name,  presence: true, uniqueness: true
   validates :hourly_rate, presence: true
   
 end
@@ -10,7 +10,7 @@ end
 # Table name: clients
 #
 #  id          :integer          not null, primary key
-#  first_name  :string(255)
+#  name  :string(255)
 #  hourly_rate :float
 #  created_at  :datetime
 #  updated_at  :datetime

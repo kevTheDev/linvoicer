@@ -4,8 +4,10 @@ describe Client do
   
   describe 'Validations' do
     
-    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:name) }
     it { should validate_presence_of(:hourly_rate) }
+    
+    it { should validate_uniqueness_of(:name) }
     
   end
   # Validations
