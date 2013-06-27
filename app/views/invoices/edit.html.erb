@@ -15,7 +15,7 @@
   <h3>Invoice Items</h3>
   
   <div class="form-inputs">
-    <%= simple_fields_for :invoice_items do |builder| %>
+    <%= f.simple_fields_for :invoice_items do |builder| %>
       <%= render partial: 'invoice_item_fields', locals: { f: builder } %>
     <% end %>
     

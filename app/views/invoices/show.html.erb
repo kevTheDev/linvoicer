@@ -10,6 +10,8 @@
       <th>Client</th>
       <th>Hourly Rate</th>
       <th>Hours</th>
+      <th>Cost</th>
+      <th>Petrol</th>
       <th>Total</th>
     </tr>
   </thead>
@@ -19,9 +21,11 @@
     <% @invoice.invoice_items.each do |invoice_item| %>	
       <tr>
         <td><%= invoice_item.client.name %></td>
-        <td><%= invoice_item.client.hourly_rate %></td>
+        <td><%= rounded_value(invoice_item.client.hourly_rate) %></td>
         <td><%= invoice_item.time_in_hours %></td>
-        <td><%= invoice_item.cost %></td>
+        <td><%= rounded_value(invoice_item.cost) %></td>
+        <td><%= rounded_value(invoice_item.petrol) %></td>
+        <td><%= rounded_value(invoice_item.total_cost) %></td>
       </tr>  
     <% end %>
     
