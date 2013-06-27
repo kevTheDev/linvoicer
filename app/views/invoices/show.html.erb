@@ -1,6 +1,8 @@
 <%- model_class = Invoice -%>
 <div class="page-header">
   <h1><%=t '.title', :default => "Invoice: #{@invoice.title}" %></h1>
+  
+  <%= link_button('Download PDF', download_invoice_path(@invoice)) %>
 </div>
 
 <table class="table">
@@ -20,18 +22,26 @@
   
   <tbody>
     
-    <% @invoice_items.each do |invoice_item| %>	
-      <tr>
-        <td><%= invoice_item.client.name %></td>
-        <td><%= nice_date(invoice_item.date) %></td>
-        <td><%= rounded_value(invoice_item.client.hourly_rate) %></td>
-        <td><%= invoice_item.time_in_hours %></td>
-        <td><%= rounded_value(invoice_item.cost) %></td>
-        <td><%= rounded_value(invoice_item.petrol) %></td>
-        <td><%= rounded_value(invoice_item.total_cost) %></td>
+    <% @client_invoice_items = @invoice_items.group_by(&:client_id) %>
+    
+    <% @client_invoice_items.each_key do |client_id| %>	
+    
+    <% @invoice_items = @client_invoice_items[client_id] %>
+    
+      <% @invoice_items.each do |invoice_item| %>
+    
+        <tr>
+          <td><%= invoice_item.client.name %></td>
+          <td><%= nice_date(invoice_item.date) %></td>
+          <td><%= rounded_value(invoice_item.client.hourly_rate) %></td>
+          <td><%= invoice_item.time_in_hours %></td>
+          <td><%= rounded_value(invoice_item.cost) %></td>
+          <td><%= rounded_value(invoice_item.petrol) %></td>
+          <td><%= rounded_value(invoice_item.total_cost) %></td>
         
-        <td><%= danger_link_button('x', invoice_item_path(invoice_item), method: :delete, confirm: 'Are you sure?') %></td>
-      </tr>  
+          <td><%= danger_link_button('x', invoice_item_path(invoice_item), method: :delete, confirm: 'Are you sure?') %></td>
+        </tr>  
+      <% end %>
     <% end %>
     
   </tbody>

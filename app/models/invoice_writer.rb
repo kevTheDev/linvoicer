@@ -12,24 +12,24 @@ class InvoiceWriter
   def write
     # Implicit Block
     Prawn::Document.generate('invoice.pdf') do |pdf|
-      font = 'Times-Roman'
+      font = 'Calibri'
       
       
-      # t = pdf.make_table([ ["this is the first row"],
-      # 
-      # ["this is the second row"] ])
-      # 
-      # t.draw
+      pdf.text "YOUR NAME Larissa Koutakos"
+      pdf.text "YOUR ADDRESS 31 Milton Road, Walton-on- Thames, Surrey, KT12 3HB"
 
       pdf.move_down 20
       
       
-      pdf.table(item_rows)
+      pdf.table(item_rows, width: 500)
+      
+      pdf.move_down 10
 
       
-      #header(pdf, font)
-      #footer(pdf, font)
-      #add_signature_boxes(pdf, font) if @manual_signature == true
+      pdf.text "TO PAY BY BACS"
+      pdf.text "ACCT NAME: L F KOUTAKOS" 
+      pdf.text "SORT CODE: 089249"
+      pdf.text "ACCT NUMBER: 11349242"
     end
   end
   
@@ -56,7 +56,7 @@ class InvoiceWriter
       invoice_items.each do |invoice_item|
         puts "INVOICE ITEM CLIENT: #{invoice_item.client.name}"
         
-        rows << [invoice_item.client.name, invoice_formatted_date(invoice_item.date), invoice_item.time_in_hours, rounded_value(invoice_item.petrol), rounded_value(invoice_item.total_cost)]
+        rows << [invoice_item.client.name, invoice_formatted_date(invoice_item.date), invoice_item.hours_string, rounded_value(invoice_item.petrol), rounded_value(invoice_item.total_cost)]
       end
     end
     rows

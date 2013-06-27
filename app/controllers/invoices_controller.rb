@@ -1,5 +1,5 @@
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_action :set_invoice, only: [:show, :edit, :update, :destroy, :download]
 
   # GET /invoices
   # GET /invoices.json
@@ -65,7 +65,7 @@ class InvoicesController < ApplicationController
   
   def download
     InvoiceWriter.new(@invoice).write
-    send_file @claim.unsigned_poa_file_path, :type => 'application/pdf', :filename => 'invoice.pdf'
+    send_file 'invoice.pdf', :type => 'application/pdf', :filename => 'invoice.pdf'
   end
 
   private

@@ -31,6 +31,14 @@ class InvoiceItem < ActiveRecord::Base
   def total_cost
     (cost + petrol).to_f
   end
+  
+  def hours_string
+    "#{hour_string(start)} - #{hour_string(finish)}"
+  end
+  
+  def hour_string(time)
+    time.strftime('%H:%M')
+  end
     
 end
 
