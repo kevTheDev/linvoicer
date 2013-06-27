@@ -1,3 +1,10 @@
 <fieldset>
+  
+  <%= f.input :client_id, collection: Client.all, label_method: :name, value_method: :id %>
+  
   <%= f.input :date %>
+  <%= f.input :start %>
+  <%= f.input :finish %>
 </fieldset>
+
+<%= link_to_remove_fields "remove", f %>
