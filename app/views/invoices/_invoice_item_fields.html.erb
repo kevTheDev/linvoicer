@@ -5,8 +5,8 @@
   <%= f.input :client_id, collection: Client.all, label_method: :name, value_method: :id %>
   
   <%= f.input :date, input_html: { 'data-behaviour' => 'datepicker' } %>
-  <%= f.input :start %>
-  <%= f.input :finish, :as => :time, minute_step: 15 %>
+  <%= f.input :start, :as => :time, minute_step: 15, start_hour: 6, end_hour: 21, ampm: true %>
+  <%= f.input :finish, :as => :time, minute_step: 15, start_hour: 6, end_hour: 21, ampm: true %>
 </fieldset>
 
 <%= link_to_remove_fields "remove", f %>
