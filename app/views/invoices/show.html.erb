@@ -3,12 +3,32 @@
   <h1><%=t '.title', :default => "Invoice: #{@invoice.title}" %></h1>
 </div>
 
-<dl class="dl-horizontal">
+<table class="table">
 	
-  <% @invoice.invoice_items.each do |invoice_item| %>	
-  <% end %>
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Hourly Rate</th>
+      <th>Hours</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    
+    <% @invoice.invoice_items.each do |invoice_item| %>	
+      <tr>
+        <td><%= invoice_item.client.name %></td>
+        <td><%= invoice_item.client.hourly_rate %></td>
+        <td><%= invoice_item.time_in_hours %></td>
+        <td><%= invoice_item.cost %></td>
+      </tr>  
+    <% end %>
+    
+  </tbody>
+  
 	
-</dl>
+</table>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
