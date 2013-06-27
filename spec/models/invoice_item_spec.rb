@@ -168,6 +168,37 @@ describe InvoiceItem do
   end
   # cost
   
+  describe 'total_cost' do
+    
+    context 'zero petrol' do
+      
+      before do
+        @invoice_item = build(:invoice_item, petrol: 0)
+        @invoice_item.stub(:cost) { 60 }
+      end
+      
+      it 'returns cost' do
+        @invoice_item.total_cost.should == 60
+      end
+    end
+    # zero petrol
+    
+    context 'with petrol' do
+      before do
+        @invoice_item = build(:invoice_item, petrol: 5.0)
+        @invoice_item.stub(:cost) { 60 }
+      end
+      
+      it 'returns cost' do
+        @invoice_item.total_cost.should == 65.0
+      end
+      
+    end
+    # with petrol
+    
+  end
+  # total
+  
 end
 
 # == Schema Information

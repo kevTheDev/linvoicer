@@ -19,6 +19,10 @@ class InvoiceItem < ActiveRecord::Base
     time_in_hours * client.hourly_rate
   end
   
+  def total_cost
+    (cost + petrol).to_f
+  end
+  
 end
 
 # == Schema Information

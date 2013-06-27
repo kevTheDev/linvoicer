@@ -6,5 +6,6 @@ FactoryGirl.define do
     date "2013-06-03"
     start "2013-06-03 21:22:19"
     finish "2013-06-03 21:22:19"
+    petrol 6.0
   end
 end
