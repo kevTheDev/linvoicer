@@ -62,6 +62,11 @@ class InvoicesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def download
+    InvoiceWriter.new(@invoice).write
+    send_file @claim.unsigned_poa_file_path, :type => 'application/pdf', :filename => 'invoice.pdf'
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

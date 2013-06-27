@@ -50,7 +50,6 @@ module ApplicationHelper
   end
   
   def rounded_value(value)
-    #value.round(2)
     number_with_precision(value, precision: 2)
   end
     
