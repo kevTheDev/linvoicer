@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th>Client</th>
+      <th>Date</th>
       <th>Hourly Rate</th>
       <th>Hours</th>
       <th>Cost</th>
@@ -19,9 +20,10 @@
   
   <tbody>
     
-    <% @invoice.invoice_items.each do |invoice_item| %>	
+    <% @invoice_items.each do |invoice_item| %>	
       <tr>
         <td><%= invoice_item.client.name %></td>
+        <td><%= nice_date(invoice_item.date) %></td>
         <td><%= rounded_value(invoice_item.client.hourly_rate) %></td>
         <td><%= invoice_item.time_in_hours %></td>
         <td><%= rounded_value(invoice_item.cost) %></td>
@@ -33,18 +35,30 @@
     <% end %>
     
   </tbody>
-  
 	
 </table>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              invoices_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_invoice_path(@invoice), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              invoice_path(@invoice),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+<h2>Add Item</h2>
+
+<%= simple_form_for @invoice_item do |f| %>
+  <div class="form-inputs">
+    <%= f.input :client_id, collection: Client.all, label_method: :name, value_method: :id, required: true %>
+    
+    <label class="date required" for="invoice_item_date">
+    <abbr title="required">*</abbr>
+      Date
+    </label>
+    
+    <input type="text" class="span2" value="<%= @invoice_item.date %>" data-date-format="mm/dd/yy" id="dp2" data-behaviour="datepicker" name="invoice_item[date]" required="true"/>
+    <%= f.input :start, :as => :time, minute_step: 15, start_hour: 6, end_hour: 21, ampm: true %>
+    <%= f.input :finish, :as => :time, minute_step: 15, start_hour: 6, end_hour: 21, ampm: true %>
+    <%= f.input :petrol, required: false %>
+    <%= f.input :invoice_id, :as => :hidden, input_html: { value: @invoice.id } %>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit 'Add Item' %>
+  </div>
+<% end %>
+
 </div>

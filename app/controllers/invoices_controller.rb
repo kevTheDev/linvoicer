@@ -10,6 +10,8 @@ class InvoicesController < ApplicationController
   # GET /invoices/1
   # GET /invoices/1.json
   def show
+    @invoice_items = @invoice.invoice_items.order('date ASC')
+    @invoice_item = InvoiceItem.new
   end
 
   # GET /invoices/new

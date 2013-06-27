@@ -28,7 +28,7 @@ class InvoiceItemsController < ApplicationController
 
     respond_to do |format|
       if @invoice_item.save
-        format.html { redirect_to @invoice_item, notice: 'Invoice item was successfully created.' }
+        format.html { redirect_to @invoice_item.invoice, notice: 'Invoice item was successfully created.' }
         format.json { render action: 'show', status: :created, location: @invoice_item }
       else
         format.html { render action: 'new' }
@@ -69,6 +69,6 @@ class InvoiceItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_item_params
-      params.require(:invoice_item).permit(:client_id, :date, :start, :end)
+      params.require(:invoice_item).permit(:client_id, :date, :start, :finish, :invoice_id, :petrol)
     end
 end

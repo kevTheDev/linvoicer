@@ -19,22 +19,10 @@
 
 $(document).ready(function(){
 
-  $('[data-behaviour~=datepicker]').datepicker({
+  var checkout = $('[data-behaviour~=datepicker]').datepicker({
     format: 'dd/mm/yyyy'
-    
-  });
+  }).on('changeDate', function(ev) {
+    checkout.hide();
+  }).data('datepicker');
   
 });
-
-
-
-function remove_fields(link) {
-  $(link).prev("input[type=hidden]").val("1");
-  $(link).closest(".fields").hide();
-}
-
-function add_fields(link, association, content) {
-  var new_id = new Date().getTime();
-  var regexp = new RegExp("new_" + association, "g")
-  $(link).parent().before(content.replace(regexp, new_id));
-}

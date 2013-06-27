@@ -4,6 +4,11 @@ class InvoiceItem < ActiveRecord::Base
   
   belongs_to :invoice
   
+  validates :client, presence: true
+  validates :date, presence: true
+  validates :start, presence: true
+  validates :finish, presence: true
+  
   def self.allowed_attributes
     [:client_id, 'date(1i)', 'date(2i)', 'date(3i)', 'start(1i)', 'start(2i)', 'start(3i)', 'finish(1i)', 'finish(2i)', 'finish(3i)', :petrol, :date, :start, :finish]
   end
