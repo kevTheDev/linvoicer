@@ -13,6 +13,7 @@
       <th>Cost</th>
       <th>Petrol</th>
       <th>Total</th>
+      <th></th>
     </tr>
   </thead>
   
@@ -26,6 +27,8 @@
         <td><%= rounded_value(invoice_item.cost) %></td>
         <td><%= rounded_value(invoice_item.petrol) %></td>
         <td><%= rounded_value(invoice_item.total_cost) %></td>
+        
+        <td><%= danger_link_button('x', invoice_item_path(invoice_item), method: :delete, confirm: 'Are you sure?') %></td>
       </tr>  
     <% end %>
     

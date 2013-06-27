@@ -9,7 +9,7 @@
       <th><%= model_class.human_attribute_name(:client_id) %></th>
       <th><%= model_class.human_attribute_name(:date) %></th>
       <th><%= model_class.human_attribute_name(:start) %></th>
-      <th><%= model_class.human_attribute_name(:end) %></th>
+      <th><%= model_class.human_attribute_name(:finish) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -21,7 +21,7 @@
         <td><%= invoice_item.client_id %></td>
         <td><%= invoice_item.date %></td>
         <td><%= invoice_item.start %></td>
-        <td><%= invoice_item.end %></td>
+        <td><%= invoice_item.finish %></td>
         <td><%=l invoice_item.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

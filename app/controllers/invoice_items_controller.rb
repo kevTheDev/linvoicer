@@ -56,7 +56,7 @@ class InvoiceItemsController < ApplicationController
   def destroy
     @invoice_item.destroy
     respond_to do |format|
-      format.html { redirect_to invoice_items_url }
+      format.html { redirect_to invoice_url(@invoice_item.invoice), notice: 'Item Deleted' }
       format.json { head :no_content }
     end
   end
