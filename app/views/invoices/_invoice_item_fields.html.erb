@@ -1,10 +1,12 @@
+<hr />
+<h4>Item</h4>
+
 <fieldset>
-  
   <%= f.input :client_id, collection: Client.all, label_method: :name, value_method: :id %>
   
-  <%= f.input :date %>
+  <%= f.input :date, input_html: { 'data-behaviour' => 'datepicker' } %>
   <%= f.input :start %>
-  <%= f.input :finish %>
+  <%= f.input :finish, :as => :time, minute_step: 15 %>
 </fieldset>
 
 <%= link_to_remove_fields "remove", f %>
