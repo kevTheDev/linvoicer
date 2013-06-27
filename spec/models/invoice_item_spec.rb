@@ -61,6 +61,113 @@ describe InvoiceItem do
   end
   # time_in_hours
   
+  describe 'cost' do
+    
+    context 'integer hourly_rate' do
+      
+      before do
+        @client = create(:client, hourly_rate: 6)
+      end
+    
+      context 'time_in_hours == 0' do
+      
+        before do
+          @invoice_item = build(:invoice_item, client: @client)
+          @invoice_item.stub(:time_in_hours) { 0 }
+        end
+      
+        it 'returns 0' do
+          @invoice_item.cost.should == 0
+        end
+        
+      end
+      # time_in_hours == 0
+      
+      context 'time_in_hours is integer' do
+      
+        before do
+          @invoice_item = build(:invoice_item, client: @client)
+          @invoice_item.stub(:time_in_hours) { 1 }
+        end
+      
+        it 'returns the hourly_rate multiplied by the time' do
+          @invoice_item.cost.should == 6
+        end
+        
+      end
+      # time_in_hours is integer
+      
+      context 'time_in_hours is float' do
+      
+        before do
+          @invoice_item = build(:invoice_item, client: @client)
+          @invoice_item.stub(:time_in_hours) { 1.25 }
+        end
+      
+        it 'returns the hourly_rate multiplied by the time' do
+          @invoice_item.cost.should == 7.5
+        end
+        
+      end
+      # time_in_hours is float
+      
+    end
+    # integer hourly_rate
+    
+    context 'float hourly_rate' do
+      
+      before do
+        @client = create(:client, hourly_rate: 6.50)
+      end
+    
+      context 'time_in_hours == 0' do
+      
+        before do
+          @invoice_item = build(:invoice_item, client: @client)
+          @invoice_item.stub(:time_in_hours) { 0 }
+        end
+      
+        it 'returns 0' do
+          @invoice_item.cost.should == 0
+        end
+        
+      end
+      # time_in_hours == 0
+      
+      context 'time_in_hours is integer' do
+      
+        before do
+          @invoice_item = build(:invoice_item, client: @client)
+          @invoice_item.stub(:time_in_hours) { 1 }
+        end
+      
+        it 'returns the hourly_rate multiplied by the time' do
+          @invoice_item.cost.should == 6.5
+        end
+        
+      end
+      # time_in_hours is integer
+      
+      context 'time_in_hours is float' do
+      
+        before do
+          @invoice_item = build(:invoice_item, client: @client)
+          @invoice_item.stub(:time_in_hours) { 1.25 }
+        end
+      
+        it 'returns the hourly_rate multiplied by the time' do
+          @invoice_item.cost.should == 8.125
+        end
+        
+      end
+      # time_in_hours is float
+      
+    end
+    # float hourly_rate
+    
+  end
+  # cost
+  
 end
 
 # == Schema Information

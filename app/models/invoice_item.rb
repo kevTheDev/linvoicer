@@ -15,6 +15,10 @@ class InvoiceItem < ActiveRecord::Base
     floor / 4.0
   end
   
+  def cost
+    time_in_hours * client.hourly_rate
+  end
+  
 end
 
 # == Schema Information
