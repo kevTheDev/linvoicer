@@ -7,6 +7,7 @@
   <%= f.input :date, input_html: { 'data-behaviour' => 'datepicker' } %>
   <%= f.input :start, :as => :time, minute_step: 15, start_hour: 6, end_hour: 21, ampm: true %>
   <%= f.input :finish, :as => :time, minute_step: 15, start_hour: 6, end_hour: 21, ampm: true %>
+  <%= f.input :petrol, required: false %>
 </fieldset>
 
 <%= link_to_remove_fields "remove", f %>
