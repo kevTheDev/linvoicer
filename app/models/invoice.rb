@@ -11,6 +11,10 @@ class Invoice < ActiveRecord::Base
     "#{month} #{year}"
   end
   
+  def total
+    invoice_items.collect { |item| item.total_cost }.inject{|sum,x| sum + x }
+  end
+  
 end
 
 # == Schema Information

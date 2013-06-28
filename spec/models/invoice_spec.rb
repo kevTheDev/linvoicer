@@ -28,6 +28,27 @@ describe Invoice do
     
   end
   # title
+  
+  describe '#total' do
+    
+    before do
+      @invoice = build(:invoice)
+      
+      item_1 = build(:invoice_item, invoice: @invoice)
+      item_2 = build(:invoice_item, invoice: @invoice)
+      
+      item_1.stub(:total_cost) { 52.30 }
+      item_2.stub(:total_cost) { 23.60 }
+      
+      @invoice.stub(:invoice_items) { [item_1, item_2] }
+    end
+    
+    it 'returns the sum of all invoice_items#total_cost' do
+      @invoice.total.should == 75.90
+    end
+    
+  end
+  # total
 end
 
 # == Schema Information
