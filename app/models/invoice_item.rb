@@ -37,7 +37,11 @@ class InvoiceItem < ActiveRecord::Base
   end
   
   def hours_string
-    "#{hour_string(start)} - #{hour_string(finish)}"
+    if work_type == 'standard'
+      "#{hour_string(start)} - #{hour_string(finish)}"
+    else
+      "#{hour_string(start)} - #{hour_string(finish)} (#{work_type})"
+    end
   end
   
   def hour_string(time)
