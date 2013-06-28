@@ -12,7 +12,7 @@ class Invoice < ActiveRecord::Base
   end
   
   def total
-    invoice_items.collect { |item| item.total_cost }.inject{|sum,x| sum + x }
+    invoice_items.collect { |item| item.total_cost }.inject(:+)
   end
   
 end
