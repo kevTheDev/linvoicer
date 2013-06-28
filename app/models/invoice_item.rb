@@ -29,11 +29,13 @@ class InvoiceItem < ActiveRecord::Base
   end
   
   def cost
-    time_in_hours * client.rate_for(work_type)
+#    time_in_hours.to_f * client.rate_for(work_type).to_f
+    
+    (BigDecimal("#{time_in_hours.to_f}") * BigDecimal("#{client.rate_for(work_type).to_f}")).to_f
   end
   
   def total_cost
-    (cost + petrol).to_f
+    (BigDecimal("#{cost.to_f}") + BigDecimal("#{petrol.to_f}")).to_f
   end
   
   def hours_string

@@ -96,6 +96,8 @@ class InvoiceWriter
         rows << [invoice_item.client.name, invoice_formatted_date(invoice_item.date), invoice_item.hours_string, rounded_value(invoice_item.petrol), rounded_value(invoice_item.total_cost)]
       end
     end
+    
+    rows << ['', "Total: £#{@invoice.total}"]
     rows
   end
   

@@ -11,9 +11,21 @@ class Invoice < ActiveRecord::Base
     "#{month} #{year}"
   end
   
+  # TODO - NEeds to work with Big Decmials
   def total
     invoice_items.collect { |item| item.total_cost }.inject(:+)
   end
+
+  # def total
+#     sum = 0
+#     invoice_items.each do |item|
+#       puts "Item: #{item.id} Cost: #{item.total_cost}"
+#       
+#       sum += item.total_cost
+#     end
+#     
+#     sum
+#   end
   
 end
 
