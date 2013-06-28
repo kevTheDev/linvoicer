@@ -16,8 +16,7 @@
         <td><%= link_to invoice.title, invoice_path(invoice) %></td>
         <td><%=l invoice.created_at %></td>
         <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_invoice_path(invoice), :class => 'btn btn-mini' %>
+          <%= link_to 'View', invoice_path(invoice), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       invoice_path(invoice),
                       :method => :delete,

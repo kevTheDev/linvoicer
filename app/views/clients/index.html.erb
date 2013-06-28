@@ -7,8 +7,9 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:hourly_rate) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:hourly_rate) %> (£/hour)</th>
+      <th><%= model_class.human_attribute_name(:supervision_rate) %> (£/hour)</th>
+      <th><%= model_class.human_attribute_name(:training_rate) %> (£/hour)</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -17,7 +18,8 @@
       <tr>
         <td><%= link_to client.name, client_path(client) %></td>
         <td><%= client.hourly_rate %></td>
-        <td><%=l client.created_at %></td>
+        <td><%= client.supervision_rate %></td>
+        <td><%= client.training_rate %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_client_path(client), :class => 'btn btn-mini' %>

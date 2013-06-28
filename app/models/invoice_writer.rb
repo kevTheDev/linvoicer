@@ -12,28 +12,65 @@ class InvoiceWriter
   def write
     # Implicit Block
     Prawn::Document.generate('invoice.pdf') do |pdf|
-      font = 'Calibri'
       
+      font = 'Times-Roman'
+      # Registering a DFONT package
       
-      pdf.text "YOUR NAME Larissa Koutakos"
-      pdf.text "YOUR ADDRESS 31 Milton Road, Walton-on- Thames, Surrey, KT12 3HB"
+    
 
-      pdf.move_down 20
+      # font_path = "#{Rails.root}/fonts/calibri/CALIBRI.TTF"
+# 
+#       pdf.font_families.update("Calibri" => {
+# 
+#       :normal => { :file => font_path, :font => "CALIBRI" },
+# 
+#       :italic => { :file => font_path, :font => "CALIBRII" },
+# 
+#       :bold => { :file => font_path, :font => "CALIBRIB" },
+# 
+#       :bold_italic => { :file => font_path, :font => "CALIBRIZ" }
+# 
+#       })
+
+#      pdf.font "Calibri"
       
+      
+      pdf.text "Larissa Koutakos"
+      pdf.text "31 Milton Road, Walton-on- Thames, Surrey, KT12 3HB"
+
+      pdf.image "#{Rails.root}/app/assets/images/bcc_logo.jpg", :at => [400, pdf.cursor]
+      
+      pdf.move_down 120
+      
+      
+      
+      pdf.font font, :size => 25, :style => :bold do
+        pdf.draw_text "INVOICE", :at => [400, pdf.cursor]
+      end
+
+      pdf.move_down 25
       
       pdf.table(item_rows, width: 500)
       
-      pdf.move_down 10
+      pdf.move_down 25
 
-      
-      pdf.text "TO PAY BY BACS"
-      pdf.text "ACCT NAME: L F KOUTAKOS" 
-      pdf.text "SORT CODE: 089249"
-      pdf.text "ACCT NUMBER: 11349242"
+
+
+      payment_details(pdf)
     end
   end
   
   private
+  
+  def payment_details(pdf)
+    pdf.draw_text "TO PAY BY BACS", :at => [400, pdf.cursor]
+    pdf.move_down 15
+    pdf.draw_text "ACCT NAME: L F KOUTAKOS", :at => [335, pdf.cursor]
+    pdf.move_down 15
+    pdf.draw_text "SORT CODE: 089249", :at => [380, pdf.cursor]
+    pdf.move_down 15
+    pdf.draw_text "ACCT NUMBER: 11349242", :at => [350, pdf.cursor]
+  end
   
   def invoice_formatted_date(date)
     date.strftime('%d/%m/%y')
