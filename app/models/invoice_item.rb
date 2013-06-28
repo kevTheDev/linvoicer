@@ -10,7 +10,7 @@ class InvoiceItem < ActiveRecord::Base
   validates :finish, presence: true
   
   def self.allowed_attributes
-    [:client_id, 'date(1i)', 'date(2i)', 'date(3i)', 'start(1i)', 'start(2i)', 'start(3i)', 'finish(1i)', 'finish(2i)', 'finish(3i)', :petrol, :date, :start, :finish]
+    [:client_id, 'date(1i)', 'date(2i)', 'date(3i)', 'start(1i)', 'start(2i)', 'start(3i)', 'finish(1i)', 'finish(2i)', 'finish(3i)', :petrol, :date, :start, :finish, :work_type]
   end
 
   # http://stackoverflow.com/questions/14903379/rounding-to-nearest-fraction-half-quarter-etc  
@@ -24,8 +24,12 @@ class InvoiceItem < ActiveRecord::Base
     floor / 4.0
   end
   
+  def rate
+    client.rate_for(work_type)
+  end
+  
   def cost
-    time_in_hours * client.hourly_rate
+    time_in_hours * client.rate_for(work_type)
   end
   
   def total_cost

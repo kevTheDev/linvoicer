@@ -69,6 +69,6 @@ class InvoiceItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def invoice_item_params
-      params.require(:invoice_item).permit(:client_id, :date, :start, :finish, :invoice_id, :petrol)
+      params.require(:invoice_item).permit(:client_id, :date, :start, :finish, :invoice_id, :petrol, :work_type)
     end
 end

@@ -11,6 +11,7 @@
     <tr>
       <th>Client</th>
       <th>Date</th>
+      <th>Work Type</th>
       <th>Hourly Rate</th>
       <th>Hours</th>
       <th>Cost</th>
@@ -33,7 +34,8 @@
         <tr>
           <td><%= invoice_item.client.name %></td>
           <td><%= nice_date(invoice_item.date) %></td>
-          <td><%= rounded_value(invoice_item.client.hourly_rate) %></td>
+          <td><%= invoice_item.work_type %></td>
+          <td><%= rounded_value(invoice_item.rate) %></td>
           <td><%= invoice_item.time_in_hours %></td>
           <td><%= rounded_value(invoice_item.cost) %></td>
           <td><%= rounded_value(invoice_item.petrol) %></td>
@@ -60,6 +62,7 @@
     </label>
     
     <input type="text" class="span2" value="<%= @invoice_item.date %>" data-date-format="mm/dd/yy" id="dp2" data-behaviour="datepicker" name="invoice_item[date]" required="true"/>
+    <%= f.input :work_type, collection: Client.work_types %>
     <%= f.input :start, :as => :time, minute_step: 15, start_hour: 6, end_hour: 21, ampm: true %>
     <%= f.input :finish, :as => :time, minute_step: 15, start_hour: 6, end_hour: 21, ampm: true %>
     <%= f.input :petrol, required: false %>
