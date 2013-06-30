@@ -45,6 +45,10 @@ class Invoice < ActiveRecord::Base
   def items_for_client(client_id)
     invoice_items.where(client_id: client_id)
   end
+  
+  def date
+    DateTime.parse("#{month} #{year}").end_of_month
+  end
 end
 
 # == Schema Information

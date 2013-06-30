@@ -27,6 +27,12 @@ class InvoiceWriter
       pdf.font font, :size => 25, :style => :bold do
         pdf.draw_text "INVOICE", :at => [400, pdf.cursor]
       end
+      
+      pdf.move_down 20
+      
+      pdf.font font, :size => 12, :style => :bold do
+        pdf.draw_text "Date: #{@invoice.date.strftime('%d/%m/%Y')}", :at => [400, pdf.cursor]
+      end
 
       pdf.move_down 25
       
