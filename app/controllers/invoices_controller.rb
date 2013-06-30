@@ -65,7 +65,7 @@ class InvoicesController < ApplicationController
   
   def download
     InvoiceWriter.new(@invoice).write
-    send_file 'invoice.pdf', :type => 'application/pdf', :filename => 'invoice.pdf'
+    send_file @invoice.filename, :type => 'application/pdf', :filename => @invoice.filename
   end
 
   private

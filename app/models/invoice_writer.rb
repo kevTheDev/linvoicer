@@ -11,30 +11,10 @@ class InvoiceWriter
   
   def write
     # Implicit Block
-    Prawn::Document.generate('invoice.pdf') do |pdf|
+    Prawn::Document.generate(filename) do |pdf|
       
       font = 'Times-Roman'
-      # Registering a DFONT package
-      
-    
 
-      # font_path = "#{Rails.root}/fonts/calibri/CALIBRI.TTF"
-# 
-#       pdf.font_families.update("Calibri" => {
-# 
-#       :normal => { :file => font_path, :font => "CALIBRI" },
-# 
-#       :italic => { :file => font_path, :font => "CALIBRII" },
-# 
-#       :bold => { :file => font_path, :font => "CALIBRIB" },
-# 
-#       :bold_italic => { :file => font_path, :font => "CALIBRIZ" }
-# 
-#       })
-
-#      pdf.font "Calibri"
-      
-      
       pdf.text "Larissa Koutakos"
       pdf.text "31 Milton Road, Walton-on- Thames, Surrey, KT12 3HB"
 

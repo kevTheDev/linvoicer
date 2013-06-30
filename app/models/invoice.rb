@@ -25,6 +25,9 @@ class Invoice < ActiveRecord::Base
     sum
   end
   
+  def filename
+    "Invoice #{month} #{year}.pdf"
+  end
   
 end
 
