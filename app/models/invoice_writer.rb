@@ -97,7 +97,7 @@ class InvoiceWriter
       end
     end
     
-    rows << ['', "Total: £#{@invoice.total}"]
+    rows << ['', '', '', '', "Total: £#{@invoice.total}"]
     rows
   end
   
