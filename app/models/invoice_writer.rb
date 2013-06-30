@@ -11,7 +11,7 @@ class InvoiceWriter
   
   def write
     # Implicit Block
-    Prawn::Document.generate(filename) do |pdf|
+    Prawn::Document.generate(@invoice.filename) do |pdf|
       
       font = 'Times-Roman'
 
@@ -75,6 +75,8 @@ class InvoiceWriter
         
         rows << [invoice_item.client.name, invoice_formatted_date(invoice_item.date), invoice_item.hours_string, rounded_value(invoice_item.petrol), rounded_value(invoice_item.total_cost)]
       end
+      
+      rows << ['', '', "#{@invoice.hours_for_client(client_id)} hours", '', "#{@invoice.total_for_client(client_id)}"]
     end
     
     rows << ['', '', '', '', "Total: £#{@invoice.total}"]

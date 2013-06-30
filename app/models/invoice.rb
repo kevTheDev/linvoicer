@@ -29,6 +29,22 @@ class Invoice < ActiveRecord::Base
     "Invoice #{month} #{year}.pdf"
   end
   
+  def hours_for_client(client_id)
+    items_for_client(client_id).collect { |item| item.time_in_hours }.inject(:+)
+  end
+  
+  def total_for_client(client_id)
+    sum = 0
+    items_for_client(client_id).each do |item|
+      sum = (BigDecimal("#{sum}") + BigDecimal("#{item.total_cost}")).to_f
+    end
+    
+    sum
+  end
+  
+  def items_for_client(client_id)
+    invoice_items.where(client_id: client_id)
+  end
 end
 
 # == Schema Information
