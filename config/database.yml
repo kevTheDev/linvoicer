@@ -4,8 +4,8 @@ development: &default
   port: 5432
   pool: 5
   database: linvoicer_development
-  username: root
-  password: 
+  username: kev
+  password:
 test:
   <<: *default
   database: linvoicer_test
