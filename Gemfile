@@ -53,9 +53,6 @@ group :test do
 end
 
 
-gem "twitter-bootstrap-rails", "~> 2.2.6"
-
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
