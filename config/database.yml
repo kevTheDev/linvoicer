@@ -11,4 +11,4 @@ test:
   database: linvoicer_test
   min_messages: warning
 production:
-  url: postgres://cljnhsxenhbqrc:BeWcuVq9kxGKlUsNcpvigxNxHO@ec2-54-75-247-251.eu-west-1.compute.amazonaws.com:5432/d27m7mar8ovcsa
+  url: <%= ENV["DATABASE_URL"] %>
